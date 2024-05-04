@@ -1,0 +1,136 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Endpoints",
+    "description": "Endpoints list of DNA-Map Backend",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000"
+    }
+  ],
+  "paths": {
+    "/v1/home": {
+      "get": {
+        "description": "Returns all the panels for dna-map mobile app",
+        "responses": {
+          "200": {
+            "description": "A list of panels.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "example": {
+                      "panels": [
+                        {
+                          "title": "Sports",
+                          "image": "https://...",
+                          "id": 1
+                        },
+                        {
+                          "title": "Nutrition",
+                          "image": "https://...",
+                          "id": 2
+                        },
+                        {
+                          "title": "Addictions",
+                          "image": "https://...",
+                          "id": 3
+                        },
+                        {
+                          "title": "Mental Health",
+                          "image": "https://...",
+                          "id": 4
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Request failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": {
+                    "error": "error while getting response"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/panels/:id": {
+      "get": {
+        "parameters": [{
+          "in": "path",
+          "name": "panelId"
+        }],
+        "description": "Panel de DNA-Map por ID",
+        "responses": {
+          "200": {
+            "description": "Detalles del analisis por categoria"
+          },
+          "500": {
+            "description": "Error al pedir el detalle del panel - JWT auth failed"
+          }
+        }
+      }
+    },
+    "/v1/category/:id" : {
+      "get": {
+        "description": "Endpoint to get data about every category search by ID",
+        "parameters": [{
+          "in": "path",
+          "name": "ID"
+        }],
+        "responses": {
+          "200": {
+            "description": "returns an object",
+            "headers": {
+
+            },
+            "content": {
+              "application/json": {
+                "example": {
+                  "title": "Capacidad aerobica",
+                  "description": "Lorem ipsum...",
+                  "percentage": 0.87,
+                  "genome": [
+
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/genome/:id": {
+      "get": {
+        "parameters": [{
+          "in": "path",
+          "name": "ID",
+          "description": "ID for user genetic data"
+        }],
+        "description": "Endpoint to retrieve data about user genome",
+        "responses": {
+          "200": {
+            "description": "User genome's data as list"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  }
+}
