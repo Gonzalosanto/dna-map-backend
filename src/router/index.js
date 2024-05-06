@@ -1,4 +1,4 @@
-import {Router} from 'hyper-express'
+import {Router} from "express";
 
 export const routes = new Router();
 
@@ -8,23 +8,57 @@ routes.get('/v1/home', (request, response) => {
         {
             id: 1,
             title: "Sports",
-            image: "https://...",
-        },
-        {
-            id: 2,
-            title: "Nutrition",
-            image: "https://...",
+            description: 'lorem ipsum...',
+            categories: [1, 2, 3, 4, 5],
+            image: "",
         }
     ])
     response.status(200).send(body);
 })
 
 routes.get('/v1/category/:id', (request, response) => {
-    response.status(200).send("Categoria enviada")
+    const params = request.params;
+    if(params.id == ':id' || params.id == null) {
+        response.status(401).json({})
+    }
+    response.status(200).json({
+        id:"1",
+        title: "aerobic capacity",
+        percentage:0.87,
+        genome: [
+            {
+                gen: "NFIA",
+                snp: "rs1572312",
+                userGenotype: 'GG',
+                idealGenotype: 'GC'
+            },            {
+                gen: "NFIA",
+                snp: "rs1572312",
+                userGenotype: 'GG',
+                idealGenotype: 'GC'
+            },            {
+                gen: "NFIA",
+                snp: "rs1572312",
+                userGenotype: 'GG',
+                idealGenotype: 'GC'
+            },            {
+                gen: "NFIA",
+                snp: "rs1572312",
+                userGenotype: 'GG',
+                idealGenotype: 'GC'
+            },
+        ]
+
+    })
 })
 
 routes.get('/v1/genome/:id', (request, response) => {
-    response.status(200).send("Genoma enviado")
+    const params = request.params;
+    console.log(params);
+    if(params.id == ':id' || params.id == null) {
+        response.status(401).json({})
+    }
+    else response.status(200).send("Genome sent")
 })
 
 routes.all('/', (request, response) => response.status(200).send("Hello everyone!"))

@@ -1,6 +1,7 @@
-import {Server} from 'hyper-express';
 
-const app = new Server()
+import Index from 'express';
+
+const app = new Index();
 import { routes} from "./src/router/index.js";
 
 app.use('/', routes)

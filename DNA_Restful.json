@@ -105,7 +105,24 @@
                   "description": "Lorem ipsum...",
                   "percentage": 0.87,
                   "genome": [
-
+                    {
+                      "g": "NFIA",
+                      "snp": "rs12345",
+                      "genotype": "GG",
+                      "idealGenotype": "GC"
+                    },
+                    {
+                      "g": "ACSL1",
+                      "snp": "rs12345",
+                      "genotype": "GG",
+                      "idealGenotype": "GC"
+                    },
+                    {
+                      "g": "NRF1",
+                      "snp": "rs12345",
+                      "genotype": "GG",
+                      "idealGenotype": "GC"
+                    }
                   ]
                 }
               }
